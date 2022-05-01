@@ -26,6 +26,7 @@ fun ProfileScreen() {
     Column(modifier = Modifier.fillMaxSize()) {
         TopBar(name = "Kiriyama Kazuma")
         Spacer(modifier = Modifier.height(4.dp))
+        ProfileSection()
     }
 }
 
@@ -84,7 +85,14 @@ fun ProfileSection(
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp)
         ) {
-
+            RoundImage(
+                image = painterResource(id = R.drawable.kiri),
+                modifier = Modifier
+                    .size(100.dp)
+                    .weight(3f)
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            StatSection(modifier = Modifier.weight(7f))
         }
     }
 }
@@ -108,6 +116,40 @@ fun RoundImage(
             .padding(3.dp)
             .clip(CircleShape)
     )
+}
+
+@Composable
+fun StatSection(modifier: Modifier = Modifier) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceAround,
+        modifier = modifier
+    ) {
+        ProfileStat(numberText = "601", text = "Posts")
+        ProfileStat(numberText = "100K", text = "Followers")
+        ProfileStat(numberText ="601", text = "Following")
+    }
+}
+
+@Composable
+fun ProfileStat(
+    numberText: String,
+    text: String,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+    ) {
+        Text(
+            text = numberText,
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(text = text)
+    }
 }
 
 @Preview
