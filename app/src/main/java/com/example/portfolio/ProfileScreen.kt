@@ -24,7 +24,11 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun ProfileScreen() {
     Column(modifier = Modifier.fillMaxSize()) {
-        TopBar(name = "Kiriyama Kazuma")
+        TopBar(
+            name = "KiriyamaKazuma.u-aizu",
+            modifier = Modifier
+                .padding(10.dp)
+        )
         Spacer(modifier = Modifier.height(4.dp))
         ProfileSection()
     }
@@ -69,7 +73,7 @@ fun TopBar(
             contentDescription = "Menu",
             tint = Color.Black,
             // Q. Modifier / modifier の違いは？
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier.size(20.dp)
         )
     }
 }
