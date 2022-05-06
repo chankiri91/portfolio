@@ -12,7 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 class MainActivity : ComponentActivity() {
-    @ExperimentalFoundationApi
+//    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
 
         lateinit var navController: NavHostController

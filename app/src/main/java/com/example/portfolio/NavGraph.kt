@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
-@ExperimentalFoundationApi
+//@ExperimentalFoundationApi
 @Composable
 fun SetUpNavGraph(
     navController: NavHostController
@@ -23,7 +23,7 @@ fun SetUpNavGraph(
         composable(
             route = Screen.News.route
         ) {
-            NewsScreen()
+            NewsScreen(navController = navController)
         }
 
     }
