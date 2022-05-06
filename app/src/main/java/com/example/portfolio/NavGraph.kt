@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
 //@ExperimentalFoundationApi
+@ExperimentalFoundationApi
 @Composable
 fun SetUpNavGraph(
     navController: NavHostController
