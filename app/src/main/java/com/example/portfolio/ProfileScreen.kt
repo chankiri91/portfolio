@@ -9,10 +9,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.Tab
-import androidx.compose.material.TabRow
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -139,14 +136,20 @@ fun TopBar(
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp
         )
-        Icon(
-            // ベクター型ドローアブルか、または PNG などのラスター化されたアセット形式を読み込むには、painterResource
-            painter = painterResource(id = R.drawable.ic_bell),
-            contentDescription = "Notice",
-            tint = Color.Black,
-            // Q. Modifier / modifier の違いは？
-            modifier = Modifier.size(24.dp)
-        )
+        IconButton(
+            onClick = {
+
+            }
+        ) {
+            Icon(
+                // ベクター型ドローアブルか、または PNG などのラスター化されたアセット形式を読み込むには、painterResource
+                painter = painterResource(id = R.drawable.ic_bell),
+                contentDescription = "Notice",
+                tint = Color.Black,
+                // Q. Modifier / modifier の違いは？
+                modifier = Modifier.size(24.dp),
+            )
+        }
         Icon(
             painter = painterResource(id = R.drawable.ic_dotmenu),
             contentDescription = "Menu",
