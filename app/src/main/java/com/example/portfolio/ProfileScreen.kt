@@ -22,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -33,13 +32,17 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @ExperimentalFoundationApi
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(
+    navController: NavController
+) {
     var selectedTabIndex by remember {
         mutableStateOf(0)
     }
@@ -48,7 +51,8 @@ fun ProfileScreen() {
         TopBar(
             name = "KiriyamaKazuma.u-aizu",
             modifier = Modifier
-                .padding(10.dp)
+                .padding(10.dp),
+            navController = navController
         )
         Spacer(modifier = Modifier.height(4.dp))
         ProfileSection()
@@ -84,13 +88,16 @@ fun ProfileScreen() {
                 ImageWithText(
                     image = painterResource(id = R.drawable.ic_grid),
                     text = "Posts"
-                ),ImageWithText(
+                ),
+                ImageWithText(
                     image = painterResource(id = R.drawable.ic_reels),
                     text = "Reels"
-                ),ImageWithText(
+                ),
+                ImageWithText(
                     image = painterResource(id = R.drawable.ic_igtv),
                     text = "IGTV"
-                ),ImageWithText(
+                ),
+                ImageWithText(
                     image = painterResource(id = R.drawable.profile),
                     text = "Profile"
                 ),
@@ -98,7 +105,7 @@ fun ProfileScreen() {
         ) {
             selectedTabIndex = it
         }
-        when(selectedTabIndex) {
+        when (selectedTabIndex) {
             0 -> PostSection(
                 posts = listOf(
                     painterResource(id = R.drawable.couniva),
@@ -113,7 +120,8 @@ fun ProfileScreen() {
 @Composable
 fun TopBar(
     name: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -138,7 +146,7 @@ fun TopBar(
         )
         IconButton(
             onClick = {
-
+                navController.navigate(Screen.News.route)
             }
         ) {
             Icon(
@@ -146,7 +154,6 @@ fun TopBar(
                 painter = painterResource(id = R.drawable.ic_bell),
                 contentDescription = "Notice",
                 tint = Color.Black,
-                // Q. Modifier / modifier の違いは？
                 modifier = Modifier.size(24.dp),
             )
         }
@@ -463,11 +470,4 @@ fun PostSection(
             )
         }
     }
-}
-
-
-@Preview
-@Composable
-fun PreviewTop() {
-    TopBar(name = "Kiriyama Kazuma")
 }
